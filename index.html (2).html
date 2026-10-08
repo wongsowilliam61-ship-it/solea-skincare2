@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOLEA Skincare | Gentle Sun Protection & Daily Radiant Skin</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        solea: {
+                            bg: '#FAF7F2',
+                            card: '#F4ECE1',
+                            primary: '#C59B6D',
+                            dark: '#3A322C',
+                            accent: '#E5D5C5',
+                            soft: '#E8DDD0',
+                            gold: '#D4A373'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom aesthetics and animations */
+        body {
+            background-color: #FAF7F2;
+            color: #3A322C;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .glass-nav {
+            background: rgba(250, 247, 242, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .sun-glow {
+            box-shadow: 0 10px 40px -10px rgba(197, 155, 109, 0.25);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #C59B6D 0%, #9E7447 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Smooth tab transition */
+        .filter-btn.active {
+            background-color: #3A322C;
+            color: #FAF7F2;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-solea-primary selection:text-white">
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-nav border-b border-solea-accent/40 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Brand Logo -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-full bg-solea-card border border-solea-primary/30 flex items-center justify-center p-2 group-hover:scale-105 transition-transform duration-300">
+                    <!-- SOLEA Sun Emblem SVG -->
+                    <svg viewBox="0 0 100 100" class="w-full h-full stroke-solea-primary fill-none stroke-[4]" stroke-linecap="round">
+                        <circle cx="50" cy="50" r="28" stroke-dasharray="2 2" />
+                        <circle cx="50" cy="50" r="22" stroke-width="5" />
+                        <!-- Sun Rays -->
+                        <line x1="50" y1="8" x2="50" y2="18" />
+                        <line x1="50" y1="82" x2="50" y2="92" />
+                        <line x1="8" y1="50" x2="18" y2="50" />
+                        <line x1="82" y1="50" x2="92" y2="50" />
+                        <line x1="20" y1="20" x2="27" y2="27" />
+                        <line x1="73" y1="73" x2="80" y2="80" />
+                        <line x1="20" y1="80" x2="27" y2="73" />
+                        <line x1="73" y1="27" x2="80" y2="20" />
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif text-2xl font-bold tracking-wider text-solea-dark">SOLEA</span>
+                    <span class="text-[9px] tracking-[0.25em] text-solea-primary uppercase font-semibold -mt-1">SKINCARE</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-solea-dark/80">
+                <a href="#home" class="hover:text-solea-primary transition-colors py-1 border-b-2 border-transparent hover:border-solea-primary">Beranda</a>
+                <a href="#about" class="hover:text-solea-primary transition-colors py-1 border-b-2 border-transparent hover:border-solea-primary">Tentang Kami</a>
+                <a href="#products" class="hover:text-solea-primary transition-colors py-1 border-b-2 border-transparent hover:border-solea-primary">Produk</a>
+                <a href="#ingredients" class="hover:text-solea-primary transition-colors py-1 border-b-2 border-transparent hover:border-solea-primary">Kandungan</a>
+                <a href="#contact" class="hover:text-solea-primary transition-colors py-1 border-b-2 border-transparent hover:border-solea-primary">Kontak</a>
+            </nav>
+
+            <!-- CTA Actions -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="https://wa.me/6281234567890?text=Halo%20SOLEA%20Skincare,%20saya%20ingin%20konsultasi%20produk%20sunscreen." target="_blank" class="px-5 py-2.5 rounded-full bg-solea-dark text-solea-bg hover:bg-solea-primary transition-colors text-sm font-medium shadow-sm flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Konsultasi Gratis</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="menu-toggle" class="md:hidden text-solea-dark text-2xl p-2 focus:outline-none" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars" id="menu-icon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-solea-bg border-b border-solea-accent/50 px-6 py-6 shadow-xl">
+            <div class="flex flex-col gap-4 text-base font-medium">
+                <a href="#home" class="mobile-link py-2 border-b border-solea-accent/30 text-solea-dark">Beranda</a>
+                <a href="#about" class="mobile-link py-2 border-b border-solea-accent/30 text-solea-dark">Tentang Kami</a>
+                <a href="#products" class="mobile-link py-2 border-b border-solea-accent/30 text-solea-dark">Produk</a>
+                <a href="#ingredients" class="mobile-link py-2 border-b border-solea-accent/30 text-solea-dark">Kandungan Utama</a>
+                <a href="#contact" class="mobile-link py-2 text-solea-dark">Kontak</a>
+                <a href="https://wa.me/6281234567890?text=Halo%20SOLEA%20Skincare,%20saya%20ingin%20konsultasi%20produk%20sunscreen." target="_blank" class="mt-2 w-full py-3 rounded-xl bg-solea-primary text-white text-center font-medium flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>Konsultasi WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-solea-card border border-solea-primary/30 text-solea-dark text-xs sm:text-sm font-semibold tracking-wide">
+                        <span class="w-2 h-2 rounded-full bg-solea-primary animate-pulse"></span>
+                        GENTLE SUN PROTECTION & DAILY RADIANT SKIN
+                    </div>
+                    
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-solea-dark font-normal leading-tight">
+                        Perlindungan Matahari Alami untuk Kulit <span class="italic font-semibold text-gradient">Cerah Berkilau</span>
+                    </h1>
+                    
+                    <p class="text-solea-dark/80 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
+                        Diformulasikan khusus dengan bahan botanikal pilihan untuk memberikan perlindungan sinar UVA/UVB maksimal tanpa rasa lengket, tanpa *white-cast*, serta nyaman digunakan sepanjang hari di iklim tropis.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#products" class="w-full sm:w-auto px-8 py-4 rounded-full bg-solea-dark text-solea-bg hover:bg-solea-primary transition-all duration-300 font-medium text-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                            Jelajahi Produk
+                        </a>
+                        <a href="https://wa.me/6281234567890?text=Halo%20SOLEA,%20saya%20ingin%20tanya%20mengenai%20produk" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-full border border-solea-dark/30 hover:border-solea-primary text-solea-dark hover:text-solea-primary transition-all duration-300 font-medium text-center flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Hubungi Kami</span>
+                        </a>
+                    </div>
+
+                    <!-- Key Badges -->
+                    <div class="pt-8 grid grid-cols-3 gap-4 border-t border-solea-accent/60 max-w-lg mx-auto lg:mx-0">
+                        <div class="text-center lg:text-left">
+                            <span class="block font-serif text-2xl font-bold text-solea-dark">SPF 50+</span>
+                            <span class="text-xs text-solea-dark/70 font-medium">Broad Spectrum</span>
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <span class="block font-serif text-2xl font-bold text-solea-dark">0%</span>
+                            <span class="text-xs text-solea-dark/70 font-medium">White-Cast</span>
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <span class="block font-serif text-2xl font-bold text-solea-dark">100%</span>
+                            <span class="text-xs text-solea-dark/70 font-medium">Dermatology Safe</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Visual Showcase -->
+                <div class="lg:col-span-5 relative flex justify-center">
+                    <div class="relative w-full max-w-md aspect-[4/5] rounded-3xl bg-gradient-to-b from-solea-card to-solea-accent/40 p-6 flex flex-col items-center justify-center sun-glow border border-white/60">
+                        
+                        <!-- Sun background graphic decoration -->
+                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-solea-primary/10 rounded-full blur-2xl"></div>
+                        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-solea-gold/20 rounded-full blur-2xl"></div>
+
+                        <!-- Sun Motif Card Frame -->
+                        <div class="w-full h-full rounded-2xl border border-solea-primary/20 bg-white/50 backdrop-blur-sm p-6 flex flex-col items-center justify-between text-center relative z-10">
+                            
+                            <div class="w-20 h-20 text-solea-primary opacity-80 animate-spin-slow my-auto">
+                                <svg viewBox="0 0 100 100" class="w-full h-full stroke-solea-primary fill-none stroke-[3]">
+                                    <circle cx="50" cy="50" r="28" stroke-dasharray="3 3" />
+                                    <circle cx="50" cy="50" r="20" stroke-width="4" />
+                                    <path d="M 50 10 L 50 20 M 50 80 L 50 90 M 10 50 L 20 50 M 80 50 L 90 50" />
+                                    <path d="M 22 22 L 29 29 M 71 71 L 78 78 M 22 78 L 29 71 M 71 29 L 78 22" />
+                                </svg>
+                            </div>
+
+                            <!-- Bottle Visual Representation -->
+                            <div class="w-32 h-52 bg-gradient-to-b from-white to-solea-card rounded-2xl shadow-xl border border-solea-accent flex flex-col items-center justify-between p-4 my-2 transform hover:scale-105 transition-transform duration-300">
+                                <div class="w-12 h-3 bg-solea-primary/30 rounded-full"></div>
+                                <div class="text-center my-auto">
+                                    <span class="font-serif text-lg font-bold block text-solea-dark">SOLEA</span>
+                                    <span class="text-[8px] uppercase tracking-widest text-solea-primary block">Sun Glow</span>
+                                    <span class="text-[9px] font-bold text-solea-dark mt-2 block bg-solea-accent/50 px-2 py-0.5 rounded">SPF 50+ PA++++</span>
+                                </div>
+                                <div class="w-8 h-1 bg-solea-primary/40 rounded-full"></div>
+                            </div>
+
+                            <div class="mt-auto pt-4">
+                                <span class="font-serif text-lg font-medium text-solea-dark block">SOLEA Daily UV Shield</span>
+                                <span class="text-xs text-solea-dark/70">Tekstur Ringan • Menutrisi • Alami</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-solea-card/60 relative border-y border-solea-accent/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Left Aesthetic Column -->
+                <div class="relative">
+                    <div class="p-8 sm:p-12 rounded-3xl bg-solea-bg border border-solea-accent shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-solea-primary/5 rounded-full blur-xl"></div>
+                        <span class="text-solea-primary font-serif italic text-6xl block mb-4">"Sol"</span>
+                        <h3 class="font-serif text-2xl sm:text-3xl font-medium text-solea-dark mb-4">
+                            Kemurnian Sinar Matahari dalam Setiap Tetes Perawatan
+                        </h3>
+                        <p class="text-solea-dark/80 leading-relaxed font-light mb-6">
+                            Nama <strong>SOLEA</strong> terinspirasi dari kata Latin <em>"Sol"</em> yang berarti Matahari. Kami percaya bahwa sinar matahari adalah sumber kehidupan dan energi, namun kulit kita membutuhkan perlindungan terbaik agar tetap sehat dan memancar alami.
+                        </p>
+                        <p class="text-solea-dark/80 leading-relaxed font-light">
+                            Berbasis di <strong>Batam, Indonesia</strong>, SOLEA merancang formula sunscreen ramah iklim tropis yang menggabungkan perlindungan spektrum luas (*broad spectrum*) dengan nutrisi ekstrak botanikal.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Advantages Grid -->
+                <div class="space-y-6">
+                    <div class="text-left">
+                        <span class="text-xs font-semibold uppercase tracking-widest text-solea-primary block mb-2">Mengapa Memilih SOLEA?</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl text-solea-dark font-normal">
+                            Standar Tinggi untuk Kesehatan Skin Barrier Anda
+                        </h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                        <div class="p-5 rounded-2xl bg-solea-bg border border-solea-accent/50 hover:border-solea-primary/40 transition-colors">
+                            <div class="w-10 h-10 rounded-xl bg-solea-card text-solea-primary flex items-center justify-center mb-3">
+                                <i class="fa-solid fa-feather-pointed text-lg"></i>
+                            </div>
+                            <h4 class="font-semibold text-solea-dark mb-1">Lightweight Formula</h4>
+                            <p class="text-xs text-solea-dark/70 leading-relaxed">Cepat meresap, tidak greasy, dan tanpa meninggalkan rasa lengket.</p>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-solea-bg border border-solea-accent/50 hover:border-solea-primary/40 transition-colors">
+                            <div class="w-10 h-10 rounded-xl bg-solea-card text-solea-primary flex items-center justify-center mb-3">
+                                <i class="fa-solid fa-[#C59B6D] fa-wand-magic-sparkles text-lg"></i>
+                            </div>
+                            <h4 class="font-semibold text-solea-dark mb-1">Zero White-Cast</h4>
+                            <p class="text-xs text-solea-dark/70 leading-relaxed">Menyatu sempurna dengan semua warna kulit tanpa efek abu-abu.</p>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-solea-bg border border-solea-accent/50 hover:border-solea-primary/40 transition-colors">
+                            <div class="w-10 h-10 rounded-xl bg-solea-card text-solea-primary flex items-center justify-center mb-3">
+                                <i class="fa-solid fa-user-shield text-lg"></i>
+                            </div>
+                            <h4 class="font-semibold text-solea-dark mb-1">Dermatology Safe</h4>
+                            <p class="text-xs text-solea-dark/70 leading-relaxed">Hypoallergenic & ramah untuk jenis kulit sensitif maupun berjerawat.</p>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-solea-bg border border-solea-accent/50 hover:border-solea-primary/40 transition-colors">
+                            <div class="w-10 h-10 rounded-xl bg-solea-card text-solea-primary flex items-center justify-center mb-3">
+                                <i class="fa-solid fa-leaf text-lg"></i>
+                            </div>
+                            <h4 class="font-semibold text-solea-dark mb-1">Cruelty-Free & Clean</h4>
+                            <p class="text-xs text-solea-dark/70 leading-relaxed">Bebas paraben, alkohol keras, dan bahan kimia berbahaya.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-semibold uppercase tracking-widest text-solea-primary block mb-2">Rangkaian Pilihan</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-solea-dark font-normal">Koleksi Sun Protection SOLEA</h2>
+                <p class="text-solea-dark/70 mt-3 text-sm font-light">Pilih formula perlindungan matahari yang disesuaikan dengan kebutuhan harian kulit Anda.</p>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Product Card 1 -->
+                <div class="bg-solea-card/50 rounded-3xl p-6 border border-solea-accent/60 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative w-full aspect-square rounded-2xl bg-solea-bg overflow-hidden p-6 flex items-center justify-center mb-6 border border-solea-accent/30">
+                            <span class="absolute top-3 left-3 bg-solea-dark text-solea-bg text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">BEST SELLER</span>
+                            <span class="absolute top-3 right-3 bg-solea-primary/20 text-solea-dark text-[10px] font-bold px-2.5 py-1 rounded-md">SPF 50+ PA++++</span>
+                            
+                            <!-- Product Icon / Mockup -->
+                            <div class="w-24 h-40 bg-gradient-to-b from-white to-solea-soft rounded-xl border border-solea-primary/30 flex flex-col items-center justify-center p-3 shadow-md group-hover:scale-105 transition-transform duration-300">
+                                <div class="w-8 h-2 bg-solea-primary/40 rounded-full mb-auto"></div>
+                                <span class="font-serif font-bold text-xs text-solea-dark">SOLEA</span>
+                                <span class="text-[7px] text-solea-primary uppercase tracking-widest">Daily Shield</span>
+                                <div class="w-full h-0.5 bg-solea-primary/20 my-2"></div>
+                                <span class="text-[8px] text-center text-solea-dark/60 font-medium">50ml / 1.7 oz</span>
+                            </div>
+                        </div>
+
+                        <h3 class="font-serif text-xl font-medium text-solea-dark mb-2">SOLEA Daily UV Shield Cream</h3>
+                        <p class="text-xs text-solea-dark/70 leading-relaxed mb-4">Sunscreen harian ultra-ringan yang melembapkan dan melindungi dari bahaya sinar UVA/UVB serta polusi perkotaan.</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[10px] bg-solea-bg text-solea-dark px-2.5 py-1 rounded-md border border-solea-accent/40">Hybrid Filter</span>
+                            <span class="text-[10px] bg-solea-bg text-solea-dark px-2.5 py-1 rounded-md border border-solea-accent/40">Moisturizing</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-solea-accent/50 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-solea-dark/60 block">Harga</span>
+                            <span class="font-serif text-lg font-bold text-solea-dark">Rp 149.000</span>
+                        </div>
+                        <a href="https://wa.me/6281234567890?text=Halo%20SOLEA,%20saya%20ingin%20memesan%20SOLEA%20Daily%20UV%20Shield%20Cream" target="_blank" class="px-4 py-2.5 rounded-full bg-solea-primary hover:bg-solea-dark text-white text-xs font-medium transition-colors flex items-center gap-1.5">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Pesan via WA</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="bg-solea-card/50 rounded-3xl p-6 border border-solea-accent/60 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative w-full aspect-square rounded-2xl bg-solea-bg overflow-hidden p-6 flex items-center justify-center mb-6 border border-solea-accent/30">
+                            <span class="absolute top-3 left-3 bg-solea-gold text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">GLOW BOOST</span>
+                            <span class="absolute top-3 right-3 bg-solea-primary/20 text-solea-dark text-[10px] font-bold px-2.5 py-1 rounded-md">SPF 50+ PA++++</span>
+                            
+                            <!-- Product Icon / Mockup -->
+                            <div class="w-24 h-40 bg-gradient-to-b from-white to-solea-accent rounded-xl border border-solea-primary/30 flex flex-col items-center justify-center p-3 shadow-md group-hover:scale-105 transition-transform duration-300">
+                                <div class="w-8 h-2 bg-solea-gold/60 rounded-full mb-auto"></div>
+                                <span class="font-serif font-bold text-xs text-solea-dark">SOLEA</span>
+                                <span class="text-[7px] text-solea-primary uppercase tracking-widest">Tone-Up Glow</span>
+                                <div class="w-full h-0.5 bg-solea-primary/20 my-2"></div>
+                                <span class="text-[8px] text-center text-solea-dark/60 font-medium">50ml / 1.7 oz</span>
+                            </div>
+                        </div>
+
+                        <h3 class="font-serif text-xl font-medium text-solea-dark mb-2">SOLEA Tone-Up Sun Glow</h3>
+                        <p class="text-xs text-solea-dark/70 leading-relaxed mb-4">Sunscreen dengan efek pencerah seketika secara alami tanpa efek keabu-abuan. Memberikan hasil *dewy radiant finish*.</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[10px] bg-solea-bg text-solea-dark px-2.5 py-1 rounded-md border border-solea-accent/40">Instant Radiance</span>
+                            <span class="text-[10px] bg-solea-bg text-solea-dark px-2.5 py-1 rounded-md border border-solea-accent/40">Niacinamide</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-solea-accent/50 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-solea-dark/60 block">Harga</span>
+                            <span class="font-serif text-lg font-bold text-solea-dark">Rp 169.000</span>
+                        </div>
+                        <a href="https://wa.me/6281234567890?text=Halo%20SOLEA,%20saya%20ingin%20memesan%20SOLEA%20Tone-Up%20Sun%20Glow" target="_blank" class="px-4 py-2.5 rounded-full bg-solea-primary hover:bg-solea-dark text-white text-xs font-medium transition-colors flex items-center gap-1.5">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Pesan via WA</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="bg-solea-card/50 rounded-3xl p-6 border border-solea-accent/60 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative w-full aspect-square rounded-2xl bg-solea-bg overflow-hidden p-6 flex items-center justify-center mb-6 border border-solea-accent/30">
+                            <span class="absolute top-3 left-3 bg-emerald-800 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">SOOTHING</span>
+                            <span class="absolute top-3 right-3 bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2.5 py-1 rounded-md">AFTER-SUN</span>
+                            
+                            <!-- Product Icon / Mockup -->
+                            <div class="w-24 h-40 bg-gradient-to-b from-white to-emerald-50 rounded-xl border border-emerald-200 flex flex-col items-center justify-center p-3 shadow-md group-hover:scale-105 transition-transform duration-300">
+                                <div class="w-8 h-2 bg-emerald-200 rounded-full mb-auto"></div>
+                                <span class="font-serif font-bold text-xs text-solea-dark">SOLEA</span>
+                                <span class="text-[7px] text-emerald-700 uppercase tracking-widest">Cooling Gel</span>
+                                <div class="w-full h-0.5 bg-emerald-200 my-2"></div>
+                                <span class="text-[8px] text-center text-solea-dark/60 font-medium">100ml / 3.4 oz</span>
+                            </div>
+                        </div>
+
+                        <h3 class="font-serif text-xl font-medium text-solea-dark mb-2">SOLEA Soothing After-Sun Gel</h3>
+                        <p class="text-xs text-solea-dark/70 leading-relaxed mb-4">Gel menenangkan berbahan Aloe Vera & Chamomile untuk meredakan kemerahan dan sensasi terbakar akibat paparan terik matahari.</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[10px] bg-solea-bg text-solea-dark px-2.5 py-1 rounded-md border border-solea-accent/40">Calming</span>
+                            <span class="text-[10px] bg-solea-bg text-solea-dark px-2.5 py-1 rounded-md border border-solea-accent/40">Aloe & Chamomile</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-solea-accent/50 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-solea-dark/60 block">Harga</span>
+                            <span class="font-serif text-lg font-bold text-solea-dark">Rp 129.000</span>
+                        </div>
+                        <a href="https://wa.me/6281234567890?text=Halo%20SOLEA,%20saya%20ingin%20memesan%20SOLEA%20Soothing%20After-Sun%20Gel" target="_blank" class="px-4 py-2.5 rounded-full bg-solea-primary hover:bg-solea-dark text-white text-xs font-medium transition-colors flex items-center gap-1.5">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Pesan via WA</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Ingredients Section -->
+    <section id="ingredients" class="py-20 bg-solea-card/40 border-t border-solea-accent/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs font-semibold uppercase tracking-widest text-solea-primary block mb-2">Botanical & Active Goodness</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-solea-dark font-normal">Kandungan Utama SOLEA</h2>
+                <p class="text-solea-dark/70 mt-3 text-sm font-light">Sinergi antara bahan aktif modern dan ekstrak alami yang menutrisi kulit secara optimal.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Ingredient Card 1 -->
+                <div class="bg-solea-bg p-6 rounded-3xl border border-solea-accent/60 text-center hover:border-solea-primary transition-colors">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-solea-card flex items-center justify-center text-solea-primary mb-4">
+                        <i class="fa-solid fa-sparkles text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif text-lg font-medium text-solea-dark mb-2">Niacinamide</h3>
+                    <p class="text-xs text-solea-dark/70 leading-relaxed font-light">Membantu mencerahkan noda hitam, meratakan warna kulit, dan memperkuat pertahanan *skin barrier*.</p>
+                </div>
+
+                <!-- Ingredient Card 2 -->
+                <div class="bg-solea-bg p-6 rounded-3xl border border-solea-accent/60 text-center hover:border-solea-primary transition-colors">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-solea-card flex items-center justify-center text-solea-primary mb-4">
+                        <i class="fa-solid fa-seedling text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif text-lg font-medium text-solea-dark mb-2">Centella Asiatica</h3>
+                    <p class="text-xs text-solea-dark/70 leading-relaxed font-light">Ekstrak alami yang meredakan iritasi, menenangkan kemerahan, serta mempercepat pemulihan kulit sensitif.</p>
+                </div>
+
+                <!-- Ingredient Card 3 -->
+                <div class="bg-solea-bg p-6 rounded-3xl border border-solea-accent/60 text-center hover:border-solea-primary transition-colors">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-solea-card flex items-center justify-center text-solea-primary mb-4">
+                        <i class="fa-solid fa-droplet text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif text-lg font-medium text-solea-dark mb-2">Hyaluronic Acid</h3>
+                    <p class="text-xs text-solea-dark/70 leading-relaxed font-light">Memberikan hidrasi mendalam dan mengunci kelembapan sehingga kulit terasa kenyal sepanjang hari.</p>
+                </div>
+
+                <!-- Ingredient Card 4 -->
+                <div class="bg-solea-bg p-6 rounded-3xl border border-solea-accent/60 text-center hover:border-solea-primary transition-colors">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-solea-card flex items-center justify-center text-solea-primary mb-4">
+                        <i class="fa-solid fa-sun text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif text-lg font-medium text-solea-dark mb-2">Botanical Extracts</h3>
+                    <p class="text-xs text-solea-dark/70 leading-relaxed font-light">Kaya akan antioksidan alami untuk menangkal radikal bebas dan bahaya penuaan dini dari paparan UV.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs font-semibold uppercase tracking-widest text-solea-primary block mb-2">Ulasan Pengguna</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-solea-dark font-normal">Dipercaya oleh Pecinta Skincare</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Review 1 -->
+                <div class="p-8 rounded-3xl bg-solea-card/40 border border-solea-accent/60 flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-1 text-solea-gold text-sm mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-sm text-solea-dark/80 italic leading-relaxed mb-6">"Akhirnya ketemu sunscreen yang ramah banget buat cuaca panas Batam! Teksturnya cepat menyerap, nggak bikin muka kaya kilang minyak, dan sama sekali nggak pilling di bawah makeup."</p>
+                    </div>
+                    <div>
+                        <span class="font-medium text-solea-dark block text-sm">Amanda Clarissa</span>
+                        <span class="text-xs text-solea-dark/60">Batam, Indonesia</span>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="p-8 rounded-3xl bg-solea-card/40 border border-solea-accent/60 flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-1 text-solea-gold text-sm mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-sm text-solea-dark/80 italic leading-relaxed mb-6">"Tone-Up Sun Glow SOLEA itu penolong pas lagi buru-buru pagi hari. Muka langsung kelihatan segar alami tanpa kesan abu-abu. Suka banget sama konsep desainnya yang aesthetic!"</p>
+                    </div>
+                    <div>
+                        <span class="font-medium text-solea-dark block text-sm">Nadia Putri</span>
+                        <span class="text-xs text-solea-dark/60">Verified Customer</span>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="p-8 rounded-3xl bg-solea-card/40 border border-solea-accent/60 flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-1 text-solea-gold text-sm mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-sm text-solea-dark/80 italic leading-relaxed mb-6">"Kulitku tipe yang gampang merah kalau kena panas matahari. Pakai After-Sun Gel-nya langsung berasa adem banget. Kandungan Centella-nya benar-benar ampuh."</p>
+                    </div>
+                    <div>
+                        <span class="font-medium text-solea-dark block text-sm">Rina Fitriani</span>
+                        <span class="text-xs text-solea-dark/60">Skincare Enthusiast</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer Section -->
+    <footer id="contact" class="bg-solea-dark text-solea-bg pt-20 pb-10 border-t border-solea-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-solea-bg/10">
+                
+                <!-- Brand Info -->
+                <div class="md:col-span-5 space-y-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-solea-bg/10 flex items-center justify-center p-2">
+                            <svg viewBox="0 0 100 100" class="w-full h-full stroke-solea-primary fill-none stroke-[4]">
+                                <circle cx="50" cy="50" r="28" stroke-dasharray="2 2" />
+                                <circle cx="50" cy="50" r="22" stroke-width="5" />
+                                <line x1="50" y1="8" x2="50" y2="18" />
+                                <line x1="50" y1="82" x2="50" y2="92" />
+                                <line x1="8" y1="50" x2="18" y2="50" />
+                                <line x1="82" y1="50" x2="92" y2="50" />
+                            </svg>
+                        </div>
+                        <span class="font-serif text-2xl font-bold tracking-wider text-white">SOLEA</span>
+                    </div>
+                    <p class="text-solea-bg/70 text-sm leading-relaxed font-light max-w-sm">
+                        Menghadirkan inovasi perlindungan matahari harian yang lembut, menutrisi, dan menjaga kilau alami kulit Anda tanpa kompromi.
+                    </p>
+                    <div class="flex gap-4 pt-2">
+                        <a href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-full bg-solea-bg/10 hover:bg-solea-primary text-white flex items-center justify-center transition-colors">
+                            <i class="fa-brands fa-instagram text-lg"></i>
+                        </a>
+                        <a href="https://wa.me/6281234567890" target="_blank" class="w-10 h-10 rounded-full bg-solea-bg/10 hover:bg-solea-primary text-white flex items-center justify-center transition-colors">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                        </a>
+                        <a href="mailto:soleaskincare@gmail.com" class="w-10 h-10 rounded-full bg-solea-bg/10 hover:bg-solea-primary text-white flex items-center justify-center transition-colors">
+                            <i class="fa-regular fa-envelope text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Navigation Quick Links -->
+                <div class="md:col-span-3 space-y-4">
+                    <h4 class="font-serif text-lg font-medium text-white mb-4">Navigasi</h4>
+                    <ul class="space-y-2.5 text-sm text-solea-bg/70 font-light">
+                        <li><a href="#home" class="hover:text-solea-primary transition-colors">Beranda</a></li>
+                        <li><a href="#about" class="hover:text-solea-primary transition-colors">Tentang SOLEA</a></li>
+                        <li><a href="#products" class="hover:text-solea-primary transition-colors">Produk Sunscreen</a></li>
+                        <li><a href="#ingredients" class="hover:text-solea-primary transition-colors">Kandungan Utama</a></li>
+                    </ul>
+                </div>
+
+                <!-- Official Contact Details -->
+                <div class="md:col-span-4 space-y-4">
+                    <h4 class="font-serif text-lg font-medium text-white mb-4">Informasi Kontak</h4>
+                    <ul class="space-y-3 text-sm text-solea-bg/80 font-light">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-brands fa-instagram text-solea-primary text-base"></i>
+                            <span>@solea.skincare</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-regular fa-envelope text-solea-primary text-base"></i>
+                            <span>soleaskincare@gmail.com</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-solea-primary text-base"></i>
+                            <span>+62 812 3456 7890</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-location-dot text-solea-primary text-base"></i>
+                            <span>Batam, Indonesia</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Copyright Notice -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-solea-bg/50 font-light gap-4">
+                <p>&copy; 2026 SOLEA Skincare. All rights reserved.</p>
+                <p>Gentle Sun Protection & Daily Radiant Skin</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile menu toggle
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    if (mobileMenu.classList.contains('hidden')) {
+                        menuIcon.className = 'fa-solid fa-bars';
+                    } else {
+                        menuIcon.className = 'fa-solid fa-xmark';
+                    }
+                });
+
+                // Close mobile menu when clicking menu link
+                document.querySelectorAll('.mobile-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        menuIcon.className = 'fa-solid fa-bars';
+                    });
+                });
+            }
+
+            // Smooth scroll adjustment for fixed navbar
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId !== '#') {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            const headerOffset = 80;
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: "smooth"
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
